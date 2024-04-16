@@ -32,7 +32,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    ArticleImage(Modifier.padding(16.dp))
+                    Article(Modifier.padding(16.dp))
                 }
             }
         }
@@ -40,8 +40,13 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(modifier: Modifier = Modifier) {
-    Column {
+fun Article(modifier: Modifier = Modifier){
+    val image = painterResource(id = R.drawable.bg_compose_background)
+    Column{
+        Image(
+            painter = image,
+            contentDescription = null,
+        )
         Text(
             text = stringResource(id = R.string.heading),
             modifier = modifier,
@@ -59,22 +64,10 @@ fun Greeting(modifier: Modifier = Modifier) {
         )
     }
 }
-
-@Composable
-fun ArticleImage(modifier: Modifier = Modifier){
-    val image = painterResource(id = R.drawable.bg_compose_background)
-    Column{
-        Image(
-            painter = image,
-            contentDescription = null,
-        )
-        Greeting(modifier)
-    }
-}
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun GreetingPreview() {
     ComposeArticleTheme {
-        ArticleImage(Modifier.padding(16.dp))
+        Article(Modifier.padding(16.dp))
     }
 }
